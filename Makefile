@@ -1,5 +1,5 @@
-LIBS=-L/tmp/openssl-1.1.1/lib -lpcre -lcrypto -lm -lpthread
-CFLAGS=-ggdb -O3 -Wall -I/tmp/openssl-1.1.1/include
+LIBS=-lpcre -lcrypto -lm -lpthread
+CFLAGS=-ggdb -O3 -Wall
 OBJS=vanitygen.o oclvanitygen.o oclvanityminer.o oclengine.o keyconv.o pattern.o util.o
 PROGS=vanitygen keyconv oclvanitygen oclvanityminer
 
@@ -16,16 +16,16 @@ most: vanitygen keyconv
 all: $(PROGS)
 
 vanitygen: vanitygen.o pattern.o util.o
-	$(CC) $^ -o $@ $(CFLAGS) $(LIBS)
+    $(CC) $^ -o $@ $(CFLAGS) $(LIBS)
 
 oclvanitygen: oclvanitygen.o oclengine.o pattern.o util.o
-	$(CC) $^ -o $@ $(CFLAGS) $(LIBS) $(OPENCL_LIBS)
+    $(CC) $^ -o $@ $(CFLAGS) $(LIBS) $(OPENCL_LIBS)
 
 oclvanityminer: oclvanityminer.o oclengine.o pattern.o util.o
-	$(CC) $^ -o $@ $(CFLAGS) $(LIBS) $(OPENCL_LIBS) -lcurl
+    $(CC) $^ -o $@ $(CFLAGS) $(LIBS) $(OPENCL_LIBS) -lcurl
 
 keyconv: keyconv.o util.o
-	$(CC) $^ -o $@ $(CFLAGS) $(LIBS)
+    $(CC) $^ -o $@ $(CFLAGS) $(LIBS)
 
 clean:
-	rm -f $(OBJS) $(PROGS) $(TESTS)
+    rm -f $(OBJS) $(PROGS) $(TESTS)
