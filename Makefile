@@ -16,16 +16,16 @@ most: vanitygen keyconv
 all: $(PROGS)
 
 vanitygen: vanitygen.o pattern.o util.o
-	$(CC) $^ -o $@ $(CFLAGS) $(LIBS)
+    $(CC) $^ -o $@ $(CFLAGS) $(LIBS)
 
 oclvanitygen: oclvanitygen.o oclengine.o pattern.o util.o
-	$(CC) $^ -o $@ $(CFLAGS) $(LIBS) $(OPENCL_LIBS)
+    $(CC) $^ -o $@ $(CFLAGS) $(LIBS) $(OPENCL_LIBS)
 
 oclvanityminer: oclvanityminer.o oclengine.o pattern.o util.o
-	$(CC) $^ -o $@ $(CFLAGS) $(LIBS) $(OPENCL_LIBS) -lcurl
+    $(CC) $^ -o $@ $(CFLAGS) $(LIBS) $(OPENCL_LIBS) -lcurl
 
 keyconv: keyconv.o util.o
-	$(CC) $^ -o $@ $(CFLAGS) $(LIBS)
+    $(CC) $^ -o $@ $(CFLAGS) $(LIBS)
 
 clean:
-	rm -f $(OBJS) $(PROGS) $(TESTS)
+    rm -f $(OBJS) $(PROGS) $(TESTS)
